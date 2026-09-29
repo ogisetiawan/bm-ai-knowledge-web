@@ -2,9 +2,7 @@
 
 ## Project Overview
 
-`starterkit-ai` is a reusable frontend foundation for AI-powered applications built with Next.js.
-
-The project provides a standardized frontend architecture for applications that consume an existing backend API Gateway responsible for authentication, AI orchestration, RAG, and integration with AI providers.
+`bm-ai-knowledge-web` is a project provides a standardized frontend architecture for applications that consume an existing backend API Gateway responsible for authentication, AI orchestration, RAG, and integration with AI providers.
 
 The frontend MUST NOT implement backend AI orchestration or communicate directly with Dify.
 
@@ -47,7 +45,7 @@ The NestJS API Gateway is the only backend boundary exposed to the frontend.
 
 # 2. Primary Objective
 
-Build a reusable AI frontend foundation that can support multiple applications such as:
+Build a AI frontend foundation that can support multiple applications such as:
 
 * AI Knowledge Search
 * Enterprise Knowledge Assistant
@@ -164,43 +162,7 @@ When an API contract is unclear:
 
 ---
 
-# 6. AI Integration
-
-AI functionality must be implemented through the API Gateway.
-
-Correct:
-
-```text
-Chat UI
- ↓
-useChat()
- ↓
-chat.service.ts
- ↓
-API Client
- ↓
-NestJS Gateway
-```
-
-Incorrect:
-
-```text
-Chat UI
- ↓
-Dify API
-```
-
-Never write code such as:
-
-```typescript
-fetch("https://api.dify.ai/...")
-```
-
-inside the frontend application.
-
----
-
-# 7. Response Delivery (JSON default, SSE optional)
+# 6. Response Delivery (JSON default, SSE optional)
 
 The frontend MUST follow the response mode exposed by the NestJS API Gateway.
 
@@ -259,7 +221,7 @@ When SSE is not supported, the frontend MUST use the complete JSON response from
 
 ---
 
-# 8. Authentication
+# 7. Authentication
 
 Authentication is handled by the existing backend system.
 
@@ -283,36 +245,7 @@ Backend authorization is always authoritative.
 
 ---
 
-# 9. Environment Variables
-
-Public variables may use:
-
-```text
-NEXT_PUBLIC_*
-```
-
-Only non-sensitive configuration may be exposed to the browser.
-
-Example:
-
-```env
-NEXT_PUBLIC_APP_NAME=StarterKit AI
-NEXT_PUBLIC_API_BASE_URL=http://localhost:3001
-```
-
-Never expose:
-
-* Dify API keys
-* LLM API keys
-* backend service secrets
-* database credentials
-* internal authentication secrets
-
-Do not put secrets in `NEXT_PUBLIC_*`.
-
----
-
-# 10. UI Principles
+# 8. UI Principles
 
 All reusable UI should prioritize:
 
@@ -334,7 +267,7 @@ Do not introduce another UI library without a clear reason.
 
 ---
 
-# 11. AI Chat UI
+# 9. AI Chat UI
 
 The chat system should support:
 
@@ -359,22 +292,7 @@ Never render untrusted HTML directly.
 
 ---
 
-# 12. State Management
-
-Use the simplest appropriate state solution.
-
-Use:
-
-* React state for local UI state
-* React Context only for genuinely shared application state
-* TanStack Query for server state
-* dedicated feature hooks for feature-level state
-
-Do not introduce Redux or another global state library unless explicitly required by the project specification.
-
----
-
-# 13. Validation
+# 10. Validation
 
 Use Zod for runtime validation of external data where appropriate.
 
@@ -394,7 +312,7 @@ Application
 
 ---
 
-# 14. Error Handling
+# 11. Error Handling
 
 Errors must be handled explicitly.
 
@@ -412,7 +330,7 @@ Never expose raw internal backend errors to users unless the API contract explic
 
 ---
 
-# 15. Security
+# 12. Security
 
 Always consider:
 
@@ -430,7 +348,7 @@ Never trust client-side checks as authorization.
 
 ---
 
-# 16. Code Quality
+# 13. Code Quality
 
 Follow:
 
@@ -455,7 +373,7 @@ Avoid:
 
 ---
 
-# 17. Specification-Driven Development
+# 14. Specification-Driven Development AI Agent
 
 Before implementing a feature:
 
@@ -474,27 +392,7 @@ Do not implement behavior that is not defined by the specification unless explic
 
 ---
 
-# 18. Reusability
-
-The starter kit must remain business-agnostic.
-
-Avoid hardcoding:
-
-```text
-TDS
-SDS
-Chemical
-Behn Meyer
-Product X
-```
-
-inside generic components.
-
-Business-specific configuration should live in application configuration or feature-level implementations.
-
----
-
-# 19. Testing
+# 15. Testing
 
 Every important feature should have appropriate tests.
 
@@ -522,35 +420,52 @@ E2E tests:
 
 ---
 
-# 20. Definition of Done
+# 16. Validation Execution Policy
 
-A feature is considered complete when:
+By default, the AI Agent MUST NOT automatically run expensive validation commands after every code change.
 
-* it follows the relevant specification
-* it follows the architecture
-* API contracts are respected
-* TypeScript passes
-* ESLint passes
-* tests pass
-* loading/error states are handled
-* security requirements are satisfied
-* no secrets are exposed
-* no unrelated files are modified
-* code is reusable where appropriate
-* implementation does not introduce unnecessary dependencies
+The following commands should be skipped unless explicitly requested:
+
+- ESLint
+- TypeScript type checking
+- Production build
+- Headless browser tests
+- Full test suite
+
+
+Default behavior after implementation:
+
+- Review changed files
+- Check code consistency
+- Explain expected validation steps
+
+
+Run validation commands only when:
+
+- explicitly requested by the user
+- preparing a final implementation review
+- debugging related issues
+- verifying a critical change
+- required by the project workflow
+
+
+Examples:
+
+User:
+"Implement login page"
+
+Agent:
+- modify code
+- review affected files
+- do not automatically run lint/build
+
+
+User:
+"Implement login page and verify"
+
+Agent:
+- modify code
+- run required validation
+- report results
 
 ---
-
-# 21. Important Rule
-
-When requirements conflict with existing implementation:
-
-Do not silently redesign the architecture.
-
-Explain:
-
-1. the conflict
-2. the impact
-3. the recommended solution
-
-Then wait for explicit approval if the change affects architecture or API contracts.
