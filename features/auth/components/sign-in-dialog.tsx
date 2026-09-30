@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useId, useRef, useState, type MouseEvent } from "react";
+import { forwardRef, useId, useImperativeHandle, useRef, useState, type MouseEvent } from "react";
 
 import type { SignInContent } from "../config/sign-in-content";
 import { SignInForm } from "./sign-in-form";
@@ -9,6 +9,10 @@ import { SignInForm } from "./sign-in-form";
 type SignInDialogProps = {
   content: SignInContent;
   triggerClassName?: string;
+};
+
+export type SignInDialogHandle = {
+  open: () => void;
 };
 
 function CloseIcon() {
@@ -27,7 +31,10 @@ function CloseIcon() {
   );
 }
 
-export function SignInDialog({ content, triggerClassName }: SignInDialogProps) {
+export const SignInDialog = forwardRef<SignInDialogHandle, SignInDialogProps>(function SignInDialog(
+  { content, triggerClassName },
+  ref,
+) {
   const titleId = useId();
   const descriptionId = useId();
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -36,6 +43,8 @@ export function SignInDialog({ content, triggerClassName }: SignInDialogProps) {
   function openDialog() {
     dialogRef.current?.showModal();
   }
+
+  useImperativeHandle(ref, () => ({ open: openDialog }));
 
   function closeDialog() {
     dialogRef.current?.close();
@@ -57,9 +66,9 @@ export function SignInDialog({ content, triggerClassName }: SignInDialogProps) {
         aria-describedby={descriptionId}
         onClick={handleBackdropClick}
         onClose={() => setFormKey((key) => key + 1)}
-        className="m-auto w-[calc(100%-2rem)] max-w-[420px] rounded-[28px] border border-ink/10 bg-white p-0 text-ink shadow-[0_24px_60px_-20px_rgba(6,53,122,0.25)] transition-[opacity,scale] duration-200 backdrop:bg-ink/40 open:opacity-100 open:scale-100 starting:open:scale-95 starting:open:opacity-0"
+        className="m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-[420px] overflow-y-auto rounded-[28px] border border-ink/10 bg-white p-0 text-ink shadow-[0_24px_60px_-20px_rgba(6,53,122,0.25)] transition-[opacity,scale] duration-200 backdrop:bg-ink/40 open:scale-100 open:opacity-100 starting:open:scale-95 starting:open:opacity-0"
       >
-        <div className="relative px-6 pt-8 pb-7 sm:px-8">
+        <div className="relative px-5 pt-7 pb-6 sm:px-8 sm:pt-8 sm:pb-7">
           <button
             type="button"
             onClick={closeDialog}
@@ -71,7 +80,7 @@ export function SignInDialog({ content, triggerClassName }: SignInDialogProps) {
 
           <Image src="/images/bm-icon.svg" alt="" width={264} height={150} className="h-9 w-auto" />
 
-          <h2 id={titleId} className="mt-6 text-[28px] leading-tight font-extrabold tracking-[-0.02em] text-ink">
+          <h2 id={titleId} className="mt-5 text-2xl leading-tight font-extrabold tracking-[-0.02em] text-ink sm:mt-6 sm:text-[28px]">
             {content.title}
           </h2>
           <p id={descriptionId} className="mt-2 text-[15px] leading-6 text-ink/55">
@@ -87,4 +96,4 @@ export function SignInDialog({ content, triggerClassName }: SignInDialogProps) {
       </dialog>
     </>
   );
-}
+});

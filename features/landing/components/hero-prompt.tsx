@@ -75,13 +75,13 @@ export function HeroPrompt({ label, placeholder, examples, useExampleHint, onSub
           placeholder={showExample ? undefined : placeholder}
           aria-describedby={showExample ? hintId : undefined}
           rows={3}
-          className="relative z-10 block w-full resize-none rounded-[20px] bg-transparent px-5 pt-4 pb-14 text-[15px] leading-6 text-ink placeholder:text-ink/35 focus:outline-none"
+          className="relative z-10 block w-full resize-none rounded-[20px] bg-transparent px-4 pt-4 pb-14 text-[15px] leading-6 text-ink placeholder:text-ink/35 focus:outline-none sm:px-5"
         />
 
         {showExample && (
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 px-5 pt-4 text-[15px] leading-6 text-ink/40"
+            className="pointer-events-none absolute inset-x-0 top-0 px-4 pt-4 pr-14 pb-14 text-[15px] leading-6 text-ink/40 sm:px-5 sm:pr-16"
           >
             {example.text}
             {example.animating && (
