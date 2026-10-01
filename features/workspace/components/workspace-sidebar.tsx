@@ -69,8 +69,8 @@ function NavLink({ item, depth }: { item: AppNavItem; depth: number }) {
         "flex min-h-8 items-center gap-2 rounded-sm py-1 pr-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
         depth > 0 ? "pl-8" : "pl-2",
         active
-          ? "bg-sidebar-accent font-semibold text-sidebar-accent-foreground"
-          : "text-sidebar-foreground/80 hover:bg-background hover:text-foreground",
+          ? "bg-primary-light font-medium text-primary"
+          : "text-sidebar-foreground/80 hover:bg-bg-card hover:text-foreground",
       )}
     >
       <Icon className="size-4 shrink-0" aria-hidden="true" />
@@ -111,7 +111,7 @@ function NavBranch({
           depth > 0 ? "pl-8" : "pl-2",
           containsActive
             ? "font-semibold text-sidebar-accent-foreground"
-            : "text-sidebar-foreground/80 hover:bg-background hover:text-foreground",
+            : "text-sidebar-foreground/80 hover:bg-bg-card hover:text-foreground",
         )}
       >
         <Icon className="size-4 shrink-0" aria-hidden="true" />
@@ -195,15 +195,15 @@ export function WorkspaceSidebar({ onClose, onCollapse }: WorkspaceSidebarProps)
   }
 
   return (
-    <aside className="flex h-full w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar">
-      <div className="flex items-center justify-between gap-2 border-b border-sidebar-border px-3 py-3">
+    <aside className="flex h-full w-64 shrink-0 flex-col border-r border-border bg-bg-sidebar">
+      <div className="flex items-center justify-between gap-2 border-b border-border px-3 py-3">
         <BrandLink />
         {onCollapse ? (
           <button
             type="button"
             onClick={onCollapse}
             aria-label="Close sidebar"
-            className="inline-flex size-8 items-center justify-center rounded-sm text-foreground hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="inline-flex size-8 items-center justify-center rounded-sm text-foreground hover:bg-bg-card focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             <PanelLeftClose className="size-4" aria-hidden="true" />
           </button>
@@ -213,7 +213,7 @@ export function WorkspaceSidebar({ onClose, onCollapse }: WorkspaceSidebarProps)
             type="button"
             onClick={onClose}
             aria-label="Close menu"
-            className="inline-flex size-8 items-center justify-center rounded-sm text-foreground hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="inline-flex size-8 items-center justify-center rounded-sm text-foreground hover:bg-bg-card focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             <X className="size-4" aria-hidden="true" />
           </button>
@@ -233,7 +233,7 @@ export function WorkspaceSidebar({ onClose, onCollapse }: WorkspaceSidebarProps)
                 aria-expanded={open}
                 aria-controls={listId}
                 onClick={() => onToggle(group.id, containsActive)}
-                className="flex min-h-8 w-full items-center gap-2 rounded-sm px-2 py-1.5 text-left text-xs font-semibold tracking-wide text-muted-foreground uppercase transition-colors hover:bg-background hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                className="flex min-h-8 w-full items-center gap-2 rounded-sm px-2 py-1.5 text-left text-xs font-semibold tracking-wide text-muted-foreground uppercase transition-colors hover:bg-bg-card hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
                 <span className="min-w-0 flex-1 truncate">{group.label}</span>
                 <ChevronRight

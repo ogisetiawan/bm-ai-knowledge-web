@@ -1,17 +1,20 @@
 ---
 version: alpha
 name: AI Knowledge Chat
-description: Authenticated chat workspace using landing design tokens with a three-column shell, prompt-kit chat primitives, and flat light-mode surfaces.
+description: Authenticated chat workspace using the shared light-mode tokens, a three-column shell, prompt-kit chat primitives, and an off-white canvas.
 colors:
-  primary: "#06357a"
-  secondary: "#141414"
-  tertiary: "#ffffff"
-  neutral: "#e5e7eb"
-  surface: "#ffffff"
-  on-surface: "#141414"
-  muted: "#f4f6f9"
-  accent-soft: "#eef3fa"
-  error: "#ef4444"
+  primary: "#06357A"
+  primary-hover: "#0A4AA8"
+  primary-light: "#E8EEF7"
+  primary-foreground: "#FFFFFF"
+  bg-main: "#F8FAFC"
+  bg-sidebar: "#F1F5F9"
+  bg-card: "#FFFFFF"
+  border: "#E2E8F0"
+  text-primary: "#0F172A"
+  text-secondary: "#64748B"
+  text-muted: "#94A3B8"
+  error: "#EF4444"
 typography:
   fontFamily: "Plus Jakarta Sans, -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display, Helvetica Neue, Arial, sans-serif"
   body-lg:
@@ -51,30 +54,36 @@ spacing:
 
 # Overview
 
-AI Knowledge Chat is the authenticated workspace for asking questions against authorized knowledge sources. Visual identity **reuses** [`DESIGN-LANDING.md`](./DESIGN-LANDING.md) tokens (brand blue `#06357a`, ink `#141414`, white surfaces, Plus Jakarta Sans, flat borders, light mode only).
+AI Knowledge Chat is the authenticated workspace for asking questions against authorized knowledge sources. Visual identity **reuses** the shared tokens in [`DESIGN.md`](./DESIGN.md) (brand navy `#06357A`, ink `#0F172A`, off-white canvas `#F8FAFC`, gray sidebar `#F1F5F9`, white cards, Plus Jakarta Sans, light mode only).
 
-Layout structure follows the chat reference mockup at [`refrencee/UI Menu - Chat.png`](./refrencee/UI%20Menu%20-%20Chat.png): left navigation, center conversation, right context panel. Theme the shell with landing tokens — do **not** copy generic mockup blues that diverge from `#06357a`.
+Layout structure follows the chat reference mockup at [`refrencee/UI Menu - Chat.png`](./refrencee/UI%20Menu%20-%20Chat.png): left navigation, center conversation, right context panel. Theme the shell with those tokens — do **not** copy generic mockup blues that diverge from `#06357A`.
 
 Chat UI primitives come from [prompt-kit](https://www.prompt-kit.com/) on top of shadcn/ui. Business wrappers live under `features/chat/`.
 
-Brand accent is **blue** `#06357a` (same as landing `primary` / `brand`). Ignore outdated “accent green” wording if it appears in older landing prose.
+Brand accent is navy `#06357A` (same as landing `primary`).
 
 # Colors
 
 | Token | Value | Chat usage |
 | --- | --- | --- |
-| `primary` / `--primary` | `#06357a` | User bubbles, Send, active nav, focus ring |
-| `on-surface` / `--foreground` | `#141414` | Body text, nav labels |
-| `surface` / `--background` | `#ffffff` | Page, sidebars, cards |
-| `neutral` / `--border` | `#e5e7eb` | Panel dividers, input border, assistant bubble stroke |
-| `muted` / `--muted` | `#f4f6f9` | Subtle panel fills, suggestion chips |
-| `accent-soft` / `--accent` | `#eef3fa` | Active nav row, soft highlights |
-| `error` / `--destructive` | `#ef4444` | Errors only |
+| `primary` | `#06357A` | User bubbles, Send, focus ring |
+| `primary-hover` | `#0A4AA8` | Hover on primary actions, including Send |
+| `primary-light` | `#E8EEF7` | Active sidebar item |
+| `bg-main` / `--background` | `#F8FAFC` | App shell, chat column, dashboard |
+| `bg-sidebar` / `--sidebar` | `#F1F5F9` | Sidebar and collapsed rail |
+| `bg-card` | `#FFFFFF` | Assistant bubble, composer, suggestion chips |
+| `border` | `#E2E8F0` | Panel dividers, input border, assistant bubble stroke |
+| `text-primary` / `--foreground` | `#0F172A` | Headings, message body, nav labels |
+| `text-secondary` | `#64748B` | Helper text under the title, source captions |
+| `text-muted` | `#94A3B8` | Placeholder and disabled text |
+| `error` / `--destructive` | `#EF4444` | Errors only |
 
 Guidance:
 
-- Keep backgrounds mostly white; separate columns with `1px` borders, not heavy shadows.
-- Use brand blue sparingly for actions and user messages — not as a full-page wash.
+- The canvas is off-white. Sidebar is one step darker. Cards, the composer, and chips stay white.
+- Separate columns with a `1px` `#E2E8F0` border. Use `shadow-sm` on the assistant bubble only.
+- Active sidebar item: `bg-primary-light text-primary font-medium`. Hover on a sidebar item: `bg-bg-card`.
+- Use navy for actions and the user message. It is not a page wash.
 - Light mode only; do not ship a dark theme for chat.
 
 # Typography
@@ -118,13 +127,14 @@ Same as landing:
 
 - Prefer flat surfaces + thin borders.
 - No gradients, glassmorphism, or multi-layer shadows on core chrome.
-- Input may use a very soft brand-tinted shadow if needed for focus hierarchy (match hero prompt restraint).
+- The assistant bubble may use `shadow-sm` so the white card lifts off the off-white canvas.
+- The composer uses a `1px` border and, on focus, `border-primary` with `ring-2 ring-primary/10`. It does not use a brand-tinted drop shadow.
 
 # Shapes
 
-- Nav active row: `rounded.sm` (8px) on soft accent fill.
-- Assistant bubble / cards: `rounded.sm`–`md` with `1px` neutral border.
-- User bubble: `rounded.lg` or soft pill corners; primary fill.
+- Nav active row: `rounded.sm` (8px) on `primary-light`.
+- Assistant bubble / cards: `rounded.sm`–`md` with a `1px` `#E2E8F0` border and `shadow-sm`.
+- User bubble: `rounded.lg` or soft pill corners; primary fill, white text.
 - Prompt input: large radius (`rounded.lg` / ~20px) and thin border — same language as landing hero prompt.
 - Primary Send control: solid primary (circle or rounded square); white icon.
 
@@ -134,8 +144,8 @@ Same as landing:
 
 | Role | Treatment |
 | --- | --- |
-| User | Right-aligned; `bg-primary` + `text-primary-foreground` |
-| Assistant | Left-aligned; white / muted surface + `border-border`; markdown via prompt-kit `Markdown` |
+| User | Right-aligned; `bg-primary text-white` |
+| Assistant | Left-aligned; `bg-bg-card border border-border shadow-sm`; markdown via prompt-kit `Markdown` |
 | System / error | Muted or destructive text; never expose raw backend errors |
 
 Use prompt-kit `Message`, `MessageContent`, `MessageActions`. Override default `MessageContent` classes so user bubbles are primary (default kit styles use secondary).
@@ -144,8 +154,9 @@ Use prompt-kit `Message`, `MessageContent`, `MessageActions`. Override default `
 
 Use prompt-kit `PromptInput` + `PromptInputTextarea` + `PromptInputActions`.
 
-- White fill, thin neutral border, generous padding.
-- Send uses primary brand fill (not a loud competing hue).
+- White fill, `border-border`, generous padding.
+- Focus: `border-primary` and `ring-2 ring-primary/10`. Placeholder uses `text-muted` (`#94A3B8`).
+- Send uses `bg-primary` and `hover:bg-primary-hover`.
 - Attach / source / language controls stay secondary outline or ghost.
 
 ## Sources
@@ -154,7 +165,7 @@ Use prompt-kit `Source` when the gateway returns citations. Omit the section whe
 
 ## Suggestions
 
-Use `PromptSuggestion` for follow-up chips under the latest assistant message. Outline / muted style; pill or soft rounded.
+Use `PromptSuggestion` for follow-up chips under the latest assistant message. Pill shape, white fill, `border-border`, hover `bg-bg-sidebar`.
 
 ## Loading
 
@@ -191,7 +202,7 @@ Other top-level menus (Knowledge Center, Document Intelligence, etc.) may appear
 
 ## Do
 
-- Reuse landing colors, Plus Jakarta Sans, and flat bordered surfaces.
+- Reuse the shared tokens in [`DESIGN.md`](./DESIGN.md), Plus Jakarta Sans, and flat bordered surfaces.
 - Keep chat type scales compact (`body-*` / `label-*`).
 - Theme prompt-kit via CSS variables in `app/globals.css`.
 - Keep landing marketing layout separate from the `/chat` app shell.

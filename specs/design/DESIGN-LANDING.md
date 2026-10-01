@@ -1,15 +1,20 @@
 ---
 version: alpha
 name: qwenwork.ai
-description: Minimal, high-contrast productivity landing page with an airy white canvas, oversized hero typography, rounded pill actions, and floating document-style media cues.
+description: Minimal productivity landing page with an off-white page canvas, a white hero, navy pill actions, and floating document-style media cues.
 colors:
-  primary: "#06357a"
-  secondary: "#141414"
-  tertiary: "#ffffff"
-  neutral: "#e5e7eb"
-  surface: "#ffffff"
-  on-surface: "#141414"
-  error: "#ef4444"
+  primary: "#06357A"
+  primary-hover: "#0A4AA8"
+  primary-foreground: "#FFFFFF"
+  secondary: "#0F172A"
+  bg-main: "#F8FAFC"
+  bg-sidebar: "#F1F5F9"
+  bg-card: "#FFFFFF"
+  border: "#E2E8F0"
+  text-primary: "#0F172A"
+  text-secondary: "#64748B"
+  text-muted: "#94A3B8"
+  error: "#EF4444"
 typography:
   fontFamily: "Plus Jakarta Sans, -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display, Helvetica Neue, Arial, sans-serif"
   headline-display:
@@ -82,9 +87,10 @@ spacing:
 components:
   button:
     primary:
-      backgroundColor: "#ffffff"
-      color: "#141414"
-      borderColor: "#1414141a"
+      backgroundColor: "#06357A"
+      color: "#FFFFFF"
+      borderColor: "#06357A"
+      hoverBackgroundColor: "#0A4AA8"
       borderRadius: "{rounded.full}"
       borderWidth: 1px
       borderStyle: solid
@@ -97,8 +103,9 @@ components:
       boxShadow: none
     secondary:
       backgroundColor: "#ffffff"
-      color: "#141414"
-      borderColor: "#1414141a"
+      color: "#0F172A"
+      borderColor: "#E2E8F0"
+      hoverBackgroundColor: "#F1F5F9"
       borderRadius: "{rounded.full}"
       borderWidth: 1px
       borderStyle: solid
@@ -111,7 +118,7 @@ components:
       boxShadow: none
     link:
       backgroundColor: transparent
-      color: "#141414"
+      color: "#0F172A"
       borderColor: transparent
       borderRadius: "{rounded.none}"
       borderWidth: 0px
@@ -125,37 +132,51 @@ components:
       boxShadow: none
   card:
     backgroundColor: "#ffffff"
-    borderColor: "#e5e7eb"
+    borderColor: "#E2E8F0"
     borderRadius: "{rounded.sm}"
     borderWidth: 1px
     borderStyle: solid
     padding: 16px
-    boxShadow: none
-    textColor: "#141414"
+    boxShadow: shadow-sm
+    textColor: "#0F172A"
 ---
 
 # Overview
 
-qwenwork.ai is a clean, light-mode landing page for an AI productivity product. The visual tone is modern, friendly, and highly legible, with strong contrast, generous whitespace, and a playful floating-document motif around a centered hero.
+The landing page is a clean, light-mode page for the knowledge product. The visual tone is modern, friendly, and highly legible, with strong contrast, generous whitespace, and a playful floating-document motif around a centered hero.
 
-The page uses a single dominant accent green for branding, large editorial headlines for impact, and pill-shaped buttons for primary actions. Content is intentionally sparse above the fold to keep attention on the product claim and call to action.
+The page uses navy `#06357A` as the single brand accent, large editorial headlines for impact, and pill-shaped buttons for actions. Content is intentionally sparse above the fold to keep attention on the product claim and call to action. Color values come from [`DESIGN.md`](./DESIGN.md).
 
 # Colors
 
-Use a restrained palette. White is the dominant surface, blackish text provides the strongest contrast, and the bright green accent anchors the brand.
+Use the shared palette. The page canvas is off-white, the hero and header stay white, and navy anchors the brand.
 
-- `primary` `#06357a` — brand accent used for the QwenWork wordmark and selected decorative elements.
-- `secondary` `#141414` — primary text and strong UI chrome.
-- `tertiary` `#ffffff` — page background and button surfaces.
-- `neutral` `#e5e7eb` — subtle borders and card strokes.
-- `surface` `#ffffff` — default content surface.
-- `on-surface` `#141414` — body and heading text.
-- `error` `#ef4444` — reserved for destructive or invalid states; not prominent in the current page.
+- `primary` `#06357A` — brand accent for the wordmark, primary CTA, and selected decorative elements. Hover is `#0A4AA8`.
+- `text-primary` `#0F172A` — headings and body text.
+- `text-secondary` `#64748B` — labels and helper text.
+- `text-muted` `#94A3B8` — placeholders and disabled text.
+- `bg-main` `#F8FAFC` — page background and later Features, use case, and FAQ bands.
+- `bg-card` `#FFFFFF` — header, hero, and cards.
+- `bg-sidebar` `#F1F5F9` — hover fill for the secondary CTA.
+- `border` `#E2E8F0` — header rule, card stroke, secondary button border.
+- `error` `#EF4444` — reserved for destructive or invalid states; not prominent on the current page.
+
+Surfaces:
+
+| Region | Treatment |
+| --- | --- |
+| Page | `bg-bg-main` |
+| Header | `bg-white` with `border-b border-border` |
+| Hero | `bg-white`, brighter than the bands under it |
+| Features, use cases, FAQ | `bg-bg-main` when those sections exist |
+| Cards in those sections | `bg-white border border-border shadow-sm` |
+| Primary CTA | `bg-primary hover:bg-primary-hover`, white label |
+| Secondary CTA | `bg-white border border-border hover:bg-bg-sidebar` |
 
 Guidance:
-- Keep backgrounds mostly white.
-- Use the accent green sparingly; it should feel brand-forward, not decorative noise.
-- Do not introduce saturated competing hues in primary UI.
+- Keep the hero and header white so they stay brighter than the off-white page.
+- Use navy for the primary action and the wordmark. It is not a page wash.
+- Do not introduce a second bright brand hue in primary UI.
 
 # Typography
 
@@ -201,9 +222,9 @@ Implementation notes:
 
 Depth is minimal and soft.
 
-- Shadows are nearly absent across the interface.
-- The only notable depth cue is a very light shadow on floating/overlay-like elements, if needed.
-- Cards and inputs rely more on border, whitespace, and rounded geometry than shadow stacking.
+- Page chrome stays flat: header and hero use a border, not a stacked shadow.
+- Section cards use `shadow-sm` so white blocks lift off the off-white canvas.
+- Inputs rely on a thin `#E2E8F0` border and whitespace.
 
 Use depth sparingly:
 - Avoid heavy elevation.
@@ -231,20 +252,18 @@ Shape rules:
 
 ## Button
 
-Primary and secondary buttons are visually identical in this source: white fill, dark text, thin translucent border, pill radius, and medium weight label text.
+Both actions stay pill-shaped with medium-weight labels. The primary action is solid navy. The secondary action is a white button with a light border.
 
 Use for:
-- Primary CTA actions
-- Secondary actions in top navigation
-- Download/launch patterns
+- Primary CTA: `bg-primary`, white text, hover `bg-primary-hover`
+- Secondary CTA and quiet account actions: white fill, `#0F172A` text, `1px` `#E2E8F0` border, hover `bg-bg-sidebar`
 
-Spec:
+Shared size:
 - `minWidth: 206px`
 - `minHeight: 44px`
 - `padding: 14px 20px`
 - `fontSize: 16px`
 - `fontWeight: 600`
-- `border: 1px solid #1414141a`
 - `borderRadius: 9999px`
 
 ## Link button
@@ -262,16 +281,16 @@ Use the link style for lightweight navigation or inline actions.
 Use cards for compact content blocks and previews.
 
 - White background
-- 1px neutral border
+- 1px `#E2E8F0` border
 - 8px radius
 - 16px padding
-- No shadow
+- `shadow-sm` so the card lifts off `bg-main`
 
 ## Hero input
 
 The large prompt field in the hero follows the same visual language as a card:
 - white fill
-- thin neutral border
+- thin `#E2E8F0` border
 - generous padding
 - large radius
 - centered label/placeholder treatment
@@ -282,11 +301,11 @@ This control should feel like the main interaction surface after the CTA.
 
 ## Do
 
-- Do keep the page mostly white with black text and one green accent.
+- Do keep the page on `#F8FAFC`, the hero and header on white, body text on `#0F172A`, and one navy accent.
 - Do center the hero and preserve the strong vertical hierarchy.
 - Do use Plus Jakarta Sans for all text.
 - Do use oversized headlines with tight negative tracking in the hero.
-- Do keep buttons pill-shaped, low-contrast, and lightly bordered.
+- Do keep buttons pill-shaped. Primary is solid navy. Secondary is white with a light border.
 - Do make decorative file icons float outside the central content column.
 - Do keep borders subtle and shadows minimal.
 - Do use concise, action-oriented labels like “Try”, “Download”, or “Sign in”.

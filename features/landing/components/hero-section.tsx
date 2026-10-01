@@ -76,14 +76,14 @@ export function HeroSection({ content }: HeroSectionProps) {
         <div className="mt-6 flex w-full max-w-xs flex-col items-stretch justify-center gap-2.5 sm:mt-8 sm:max-w-none sm:flex-row sm:items-center md:gap-3 lg:mt-10">
           <Link
             href={content.primaryCta.href}
-            className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-brand px-4 text-[0.8125rem] font-semibold text-white transition-colors duration-200 hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:w-auto sm:min-w-40 sm:px-5 sm:text-sm md:h-12 md:min-w-48 md:px-6 md:text-base lg:h-[3.25rem] lg:min-w-52 lg:px-7 lg:text-[1.0625rem]"
+            className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-primary px-4 text-[0.8125rem] font-semibold text-white transition-colors duration-200 hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-auto sm:min-w-40 sm:px-5 sm:text-sm md:h-12 md:min-w-48 md:px-6 md:text-base lg:h-[3.25rem] lg:min-w-52 lg:px-7 lg:text-[1.0625rem]"
           >
             <ChatIcon />
             {content.primaryCta.label}
           </Link>
           <Link
             href={content.secondaryCta.href}
-            className="group inline-flex h-11 w-full items-center justify-center gap-2 rounded-full border border-ink/10 bg-white px-4 text-[0.8125rem] font-semibold text-ink transition-colors duration-200 hover:border-brand/30 hover:bg-brand-soft hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:w-auto sm:min-w-40 sm:px-5 sm:text-sm md:h-12 md:min-w-48 md:px-6 md:text-base lg:h-[3.25rem] lg:min-w-52 lg:px-7 lg:text-[1.0625rem]"
+            className="group inline-flex h-11 w-full items-center justify-center gap-2 rounded-full border border-border bg-white px-4 text-[0.8125rem] font-semibold text-ink transition-colors duration-200 hover:bg-bg-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-auto sm:min-w-40 sm:px-5 sm:text-sm md:h-12 md:min-w-48 md:px-6 md:text-base lg:h-[3.25rem] lg:min-w-52 lg:px-7 lg:text-[1.0625rem]"
           >
             {content.secondaryCta.label}
             <ArrowRightIcon />

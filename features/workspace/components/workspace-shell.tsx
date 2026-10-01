@@ -41,19 +41,19 @@ export function WorkspaceShell({ children }: WorkspaceShellProps) {
   }, [drawerOpen]);
 
   return (
-    <div className="flex h-dvh min-h-0 w-full overflow-hidden bg-background text-foreground">
+    <div className="flex h-dvh min-h-0 w-full overflow-hidden bg-bg-main text-foreground">
       {sidebarOpen ? (
         <div className="hidden h-full md:flex">
           <WorkspaceSidebar onCollapse={() => setSidebarOpen(false)} />
         </div>
       ) : (
-        <div className="hidden h-full w-12 shrink-0 flex-col items-center border-r border-sidebar-border bg-sidebar pt-3 md:flex">
+        <div className="hidden h-full w-12 shrink-0 flex-col items-center border-r border-border bg-bg-sidebar pt-3 md:flex">
           <button
             type="button"
             aria-expanded={false}
             aria-label="Open sidebar"
             onClick={() => setSidebarOpen(true)}
-            className="inline-flex size-8 items-center justify-center rounded-sm text-foreground hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="inline-flex size-8 items-center justify-center rounded-sm text-foreground hover:bg-bg-card focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             <PanelLeftOpen className="size-4" aria-hidden="true" />
           </button>
@@ -75,7 +75,7 @@ export function WorkspaceShell({ children }: WorkspaceShellProps) {
       ) : null}
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <div className="flex h-14 shrink-0 items-center gap-2 border-b border-border bg-background px-3 md:hidden">
+        <div className="flex h-14 shrink-0 items-center gap-2 border-b border-border bg-bg-main px-3 md:hidden">
           <button
             type="button"
             aria-expanded={drawerOpen}

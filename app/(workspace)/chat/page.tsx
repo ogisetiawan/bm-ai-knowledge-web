@@ -29,7 +29,7 @@ export default function ChatPage() {
   const [value, setValue] = useState("");
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
+    <div className="flex min-h-0 flex-1 flex-col bg-bg-main">
       <header className="shrink-0 border-b border-border px-6 py-4">
         <h1 className="text-lg font-semibold text-foreground">AI Chat</h1>
         <p className="mt-0.5 text-sm text-muted-foreground">
@@ -40,7 +40,7 @@ export default function ChatPage() {
       <ChatContainerRoot className="relative flex-1 px-6">
         <ChatContainerContent className="gap-6 py-6">
           <Message className="justify-end">
-            <MessageContent className="max-w-[85%] bg-primary text-primary-foreground prose-invert">
+            <MessageContent className="max-w-[85%] bg-primary text-white prose-invert">
               What is the flash point and handling guidance for Sodium Benzoate?
             </MessageContent>
           </Message>
@@ -48,7 +48,7 @@ export default function ChatPage() {
           <Message className="flex-col items-start gap-3">
             <MessageContent
               markdown
-              className="max-w-[85%] border border-border bg-card text-foreground"
+              className="max-w-[85%] border border-border bg-bg-card text-foreground shadow-sm"
             >
               {
                 "Based on the available SDS, **Sodium Benzoate** should be handled with standard lab precautions.\n\n- Flash point and physical constants appear in the cited SDS\n- Use PPE appropriate for chemical handling\n- Follow local SOP for spill response"
@@ -74,7 +74,7 @@ export default function ChatPage() {
         </ChatContainerContent>
       </ChatContainerRoot>
 
-      <div className="shrink-0 space-y-3 border-t border-border bg-background px-6 py-4">
+      <div className="shrink-0 space-y-3 border-t border-border bg-bg-main px-6 py-4">
         <div className="flex flex-wrap gap-2">
           {demoSuggestions.map((suggestion) => (
             <PromptSuggestion
@@ -82,7 +82,7 @@ export default function ChatPage() {
               type="button"
               variant="outline"
               size="sm"
-              className="h-auto rounded-full border-border px-3 py-1.5 text-xs font-medium text-foreground"
+              className="h-auto rounded-full border-border bg-white px-3 py-1.5 text-xs font-medium text-foreground hover:bg-bg-sidebar"
               onClick={() => setValue(suggestion)}
             >
               {suggestion}
@@ -94,11 +94,11 @@ export default function ChatPage() {
           value={value}
           onValueChange={setValue}
           onSubmit={() => setValue("")}
-          className="rounded-[20px] border-border shadow-[0_8px_30px_-12px_rgba(6,53,122,0.14)]"
+          className="rounded-[20px] border-border bg-white shadow-none focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10"
         >
           <PromptInputTextarea
             placeholder="Ask anything about your documents"
-            className="text-foreground placeholder:text-muted-foreground"
+            className="text-foreground placeholder:text-text-muted"
           />
           <PromptInputActions className="justify-end pt-1">
             <PromptInputAction tooltip="Send">

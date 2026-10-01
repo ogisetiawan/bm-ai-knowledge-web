@@ -4,40 +4,55 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Landing + product tokens (DESIGN-LANDING) mapped to shadcn CSS variables.
+/* Product tokens mapped to shadcn CSS variables.
    Light mode only — do not enable a dark theme for core UI. */
 :root {
-  --background: #ffffff;
-  --foreground: #141414;
+  --background: #f8fafc;
+  --foreground: #0f172a;
   --card: #ffffff;
-  --card-foreground: #141414;
+  --card-foreground: #0f172a;
   --popover: #ffffff;
-  --popover-foreground: #141414;
+  --popover-foreground: #0f172a;
   --primary: #06357a;
   --primary-foreground: #ffffff;
+  --primary-hover: #0a4aa8;
+  --primary-light: #e8eef7;
   --secondary: #ffffff;
-  --secondary-foreground: #141414;
-  --muted: #f4f6f9;
-  --muted-foreground: #5c6570;
-  --accent: #eef3fa;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #e8eef7;
   --accent-foreground: #06357a;
   --destructive: #ef4444;
-  --border: #e5e7eb;
-  --input: #e5e7eb;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --input: #e2e8f0;
   --ring: #06357a;
+  --text-muted: #94a3b8;
+  --success: #10b981;
+  --success-bg: #d1fae5;
+  --warning: #f59e0b;
+  --warning-bg: #fef3c7;
+  --info: #3b82f6;
+  --info-bg: #dbeafe;
+  --error-bg: #fee2e2;
+  --ai-bubble: #f8fafc;
+  --ai-bubble-border: #e2e8f0;
+  --user-bubble: #06357a;
+  --user-bubble-text: #ffffff;
   --chart-1: #06357a;
-  --chart-2: #0a4499;
-  --chart-3: #5c6570;
-  --chart-4: #eef3fa;
-  --chart-5: #141414;
+  --chart-2: #0a4aa8;
+  --chart-3: #64748b;
+  --chart-4: #e8eef7;
+  --chart-5: #0f172a;
   --radius: 0.75rem;
-  --sidebar: #f4f6f9;
-  --sidebar-foreground: #141414;
+  --sidebar: #f1f5f9;
+  --sidebar-foreground: #0f172a;
   --sidebar-primary: #06357a;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #eef3fa;
+  --sidebar-accent: #e8eef7;
   --sidebar-accent-foreground: #06357a;
-  --sidebar-border: #e5e7eb;
+  --sidebar-border: #e2e8f0;
   --sidebar-ring: #06357a;
 }
 
@@ -73,12 +88,34 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-border-hover: var(--border-hover);
+  --color-bg-main: var(--background);
+  --color-bg-sidebar: var(--sidebar);
+  --color-bg-card: var(--card);
+  --color-bg-elevated: #ffffff;
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: #ffffff;
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-info: var(--info);
+  --color-info-bg: var(--info-bg);
+  --color-error: var(--destructive);
+  --color-error-bg: var(--error-bg);
+  --color-ai-bubble: var(--ai-bubble);
+  --color-ai-bubble-border: var(--ai-bubble-border);
+  --color-user-bubble: var(--user-bubble);
+  --color-user-bubble-text: var(--user-bubble-text);
 
   /* Landing aliases — keep existing brand/ink utilities working */
-  --color-ink: #141414;
+  --color-ink: #0f172a;
   --color-brand: #06357a;
-  --color-brand-hover: #0a4499;
-  --color-brand-soft: #eef3fa;
+  --color-brand-hover: #0a4aa8;
+  --color-brand-soft: #e8eef7;
 
   --radius-sm: calc(var(--radius) * 0.67);
   --radius-md: calc(var(--radius) * 0.83);

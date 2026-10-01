@@ -29,12 +29,12 @@ export function SidebarAccount() {
   const router = useRouter();
 
   return (
-    <div className="shrink-0 border-t border-sidebar-border p-2">
+    <div className="shrink-0 border-t border-border p-2">
       <DropdownMenuPrimitive.Root>
         <DropdownMenuPrimitive.Trigger asChild>
           <button
             type="button"
-            className="flex min-h-10 w-full items-center gap-2 rounded-sm px-2 py-1.5 text-left hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring data-[state=open]:bg-background"
+            className="flex min-h-10 w-full items-center gap-2 rounded-sm px-2 py-1.5 text-left hover:bg-bg-card focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring data-[state=open]:bg-bg-card"
           >
             <Avatar>
               <AvatarFallback className="bg-primary text-xs font-semibold text-primary-foreground">

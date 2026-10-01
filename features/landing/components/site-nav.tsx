@@ -17,7 +17,7 @@ const desktopLinkClassName =
   "relative py-2 text-sm text-ink/60 transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:bg-brand after:opacity-0 after:transition-opacity hover:text-ink focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand aria-[current=page]:text-ink aria-[current=page]:after:opacity-100";
 
 const ctaClassName =
-  "h-11 items-center justify-center rounded-full bg-brand px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand lg:h-9";
+  "h-11 items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:h-9";
 
 function MenuIcon() {
   return (
@@ -102,7 +102,7 @@ export function SiteNav({ content }: SiteNavProps) {
   }
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-ink/[0.04] bg-white/80 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-white">
       <nav
         aria-label="Primary"
         className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-8"
@@ -167,14 +167,14 @@ export function SiteNav({ content }: SiteNavProps) {
         id={panelId}
         className={
           open
-            ? "relative z-50 min-h-[calc(100dvh-4rem)] border-t border-ink/[0.06] bg-white lg:hidden"
+            ? "relative z-50 min-h-[calc(100dvh-4rem)] border-t border-border bg-white lg:hidden"
             : "hidden"
         }
       >
         <div className="mx-auto flex max-h-[calc(100dvh-4rem)] w-full max-w-7xl flex-col overflow-y-auto overscroll-contain px-4 pt-2 pb-6 sm:px-6">
           <ul>
             {content.links.map((link) => (
-              <li key={link.href} className="border-b border-ink/[0.06]">
+              <li key={link.href} className="border-b border-border">
                 <NavItem
                   link={link}
                   onNavigate={closeMenu}
@@ -188,7 +188,7 @@ export function SiteNav({ content }: SiteNavProps) {
             <button
               type="button"
               onClick={openSignIn}
-              className="inline-flex h-11 items-center justify-center rounded-full border border-ink/10 bg-white text-sm font-semibold text-ink transition-colors hover:border-brand/30 hover:bg-brand-soft hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              className="inline-flex h-11 items-center justify-center rounded-full border border-border bg-white text-sm font-semibold text-ink transition-colors hover:bg-bg-sidebar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               {signInContent.triggerLabel}
             </button>
