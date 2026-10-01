@@ -144,7 +144,7 @@ The page uses a single dominant accent green for branding, large editorial headl
 
 Use a restrained palette. White is the dominant surface, blackish text provides the strongest contrast, and the bright green accent anchors the brand.
 
-- `primary` `#2ccc6c` — brand accent used for the QwenWork wordmark and selected decorative elements.
+- `primary` `#06357a` — brand accent used for the QwenWork wordmark and selected decorative elements.
 - `secondary` `#141414` — primary text and strong UI chrome.
 - `tertiary` `#ffffff` — page background and button surfaces.
 - `neutral` `#e5e7eb` — subtle borders and card strokes.
