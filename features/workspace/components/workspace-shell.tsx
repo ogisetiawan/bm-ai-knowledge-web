@@ -5,14 +5,14 @@ import Image from "next/image";
 import { Menu, PanelLeftOpen } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-import { AppSidebar } from "@/features/app-shell/components/app-sidebar";
-import { ChatRightPanel } from "@/features/app-shell/components/chat-right-panel";
+import { WorkspaceSidebar } from "@/features/workspace/components/workspace-sidebar";
+// import { ChatRightPanel } from "@/features/workspace/components/chat-right-panel";
 
-type AppShellProps = {
+type WorkspaceShellProps = {
   children: React.ReactNode;
 };
 
-export function AppShell({ children }: AppShellProps) {
+export function WorkspaceShell({ children }: WorkspaceShellProps) {
   const pathname = usePathname();
   const drawerId = useId();
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -44,7 +44,7 @@ export function AppShell({ children }: AppShellProps) {
     <div className="flex h-dvh min-h-0 w-full overflow-hidden bg-background text-foreground">
       {sidebarOpen ? (
         <div className="hidden h-full md:flex">
-          <AppSidebar onCollapse={() => setSidebarOpen(false)} />
+          <WorkspaceSidebar onCollapse={() => setSidebarOpen(false)} />
         </div>
       ) : (
         <div className="hidden h-full w-12 shrink-0 flex-col items-center border-r border-sidebar-border bg-sidebar pt-3 md:flex">
@@ -69,7 +69,7 @@ export function AppShell({ children }: AppShellProps) {
             className="fixed inset-0 z-40 bg-[#141414]/30 md:hidden"
           />
           <div id={drawerId} className="fixed inset-y-0 left-0 z-50 flex md:hidden">
-            <AppSidebar onClose={() => setDrawerOpen(false)} />
+            <WorkspaceSidebar onClose={() => setDrawerOpen(false)} />
           </div>
         </>
       ) : null}

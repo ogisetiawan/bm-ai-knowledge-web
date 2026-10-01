@@ -98,8 +98,8 @@ Three-column shell (desktop):
 ```text
 ┌──────────┬────────────────────────────┬──────────────┐
 │ Left nav │ Main chat                  │ Right panel  │
-│ menus.md │ header + messages + input  │ sources /    │
-│          │                            │ filters      │
+│ menus.md │ header + messages + input  │ sources      │
+│          │                            │ filters | opsional )    │
 └──────────┴────────────────────────────┴──────────────┘
 ```
 

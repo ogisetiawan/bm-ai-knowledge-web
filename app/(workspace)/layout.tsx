@@ -1,5 +1,5 @@
-import { AppShell } from "@/features/app-shell/components/app-shell";
+import { WorkspaceShell } from "@/features/workspace/components/workspace-shell";
 
 export default function WorkspaceLayout({ children }: { children: React.ReactNode }) {
-  return <AppShell>{children}</AppShell>;
+  return <WorkspaceShell>{children}</WorkspaceShell>;
 }

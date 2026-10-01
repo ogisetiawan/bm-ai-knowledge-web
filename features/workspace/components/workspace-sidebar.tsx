@@ -24,8 +24,8 @@ import {
   navContainsPath,
   visibleAppNav,
   type AppNavItem,
-} from "@/features/app-shell/config/nav";
-import { SidebarAccount } from "@/features/app-shell/components/sidebar-account";
+} from "@/features/workspace/config/nav";
+import { SidebarAccount } from "@/features/workspace/components/sidebar-account";
 
 const iconById: Record<string, ComponentType<{ className?: string }>> = {
   dashboard: LayoutDashboard,
@@ -171,12 +171,12 @@ function NavList({
   );
 }
 
-type AppSidebarProps = {
+type WorkspaceSidebarProps = {
   onClose?: () => void;
   onCollapse?: () => void;
 };
 
-export function AppSidebar({ onClose, onCollapse }: AppSidebarProps) {
+export function WorkspaceSidebar({ onClose, onCollapse }: WorkspaceSidebarProps) {
   const pathname = usePathname();
   const groups = visibleAppNav();
   const listIdPrefix = useId();

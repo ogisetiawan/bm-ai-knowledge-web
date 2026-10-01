@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { SectionPlaceholder } from "@/features/app-shell/components/section-placeholder";
+import { SectionPlaceholder } from "@/features/workspace/components/section-placeholder";
 
 export const metadata: Metadata = {
   title: "Settings",
