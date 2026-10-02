@@ -131,6 +131,7 @@
 
 @theme {
   --animate-float: float 7s ease-in-out infinite;
+  --animate-shimmer: shimmer 4s infinite linear;
 
   @keyframes float {
     0%,
@@ -139,6 +140,15 @@
     }
     50% {
       translate: 0 -12px;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 50%;
+    }
+    100% {
+      background-position: -200% 50%;
     }
   }
 }
